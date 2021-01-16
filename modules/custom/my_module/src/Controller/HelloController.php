@@ -10,6 +10,9 @@ class HelloController extends ControllerBase {
         return [
             '#type' => 'markup',
             '#markup' => \Drupal::config('my_module.settings')->get('terms_and_conditions')['value'],
+            '#cache' => [
+                'tags' => ['MY_CUSTOM_UNIQUE_TAG'],
+              ],
         ];
     }
 }

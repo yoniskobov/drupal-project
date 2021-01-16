@@ -61,6 +61,9 @@ class MyConfigForm extends ConfigFormBase {
         $config->set('open_shops', $form_state->getValue('open_shops'));
         $config->save();
 
+        //Invalidate cache
+        \Drupal\Core\Cache\Cache::invalidateTags(array('MY_CUSTOM_UNIQUE_TAG'));
+
 
         return parent::submitForm($form, $form_state);
     }
